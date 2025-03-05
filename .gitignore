@@ -1,0 +1,12 @@
+# Ignore Unity-generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+.vs/
+.idea/
+*.csproj
+*.sln
+wall jump.sln
