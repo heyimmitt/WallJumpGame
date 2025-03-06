@@ -5,6 +5,7 @@ public class playerScript : MonoBehaviour
     public Rigidbody2D rb;
     public float jumpForce = 5f;
     public bool isOnLeftWall = true;
+    public bool isOnWall = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
