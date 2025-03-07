@@ -43,6 +43,12 @@ public class PauseManagerScript : MonoBehaviour
     public void restart()
     {
         Time.timeScale = 1f; //resets the time before restarting
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //reloads current scene
+        SceneManager.LoadScene("SampleScene"); //reloads current scene
+    }
+
+    public void mainMenu() 
+    {
+        Time.timeScale = 1f; //resets the time scale before taking you back to the main menu
+        SceneManager.LoadScene("MainMenuScene");
     }
 }
