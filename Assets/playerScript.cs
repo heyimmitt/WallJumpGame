@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using TMPro; //for the high score 
 public class playerScript : MonoBehaviour
 {
     public Rigidbody2D rb;
@@ -12,6 +12,10 @@ public class playerScript : MonoBehaviour
 
     public CircleCollider2D playerCollider; //makes a variable so we can interact with the player collider 
     public LayerMask wallLayer; //makes a layer for walls 
+
+    public TMP_Text currentScore; //to track the score the user 
+    public int score = 0; //the int variable that tracks the score
+    public bool isCollidingWithWall = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,6 +51,17 @@ public class playerScript : MonoBehaviour
         }
     }
 
+    //this method will be called once the player enters collision with the wall
+    //this is to increase the score 
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & wallLayer) != 0 && !isCollidingWithWall)
+        {
+            increaseScore();
+            isCollidingWithWall = true;
+        }
+    }
+
     // method to check if the player is touching a wall
     public void OnCollisionStay2D(Collision2D collision)
     {
@@ -62,6 +77,13 @@ public class playerScript : MonoBehaviour
         if (((1 << collision.gameObject.layer) & wallLayer) != 0) // checking if the player is leaving a wall
         {
             isOnWall = false;
+            isCollidingWithWall = false;
         }
+    }
+
+    public void increaseScore() 
+    {
+        score++;
+        currentScore.text = score.ToString();
     }
 }
